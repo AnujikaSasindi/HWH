@@ -109,9 +109,9 @@ export default function SignupScreen() {
           <Animated.Text style={{ fontSize: 25, fontWeight: 'bold', color: '#FF6F00', textAlign: 'center' }} entering={FadeInUp.duration(1000).springify()}>Get Started</Animated.Text>
         </View>
 
-        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#D9D9D9', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
+        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#E0E0E0', marginLeft: '5%', borderRadius: 50, marginTop: 70 }} entering={FadeInDown.delay(200).springify()}>
           <TextInput
-            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#D9D9D9', borderRadius: 50 }}
+            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#E0E0E0', borderRadius: 50 }}
             placeholder='NIC'
             placeholderTextColor={'gray'}
             onChangeText={handleNICChange}
@@ -119,9 +119,9 @@ export default function SignupScreen() {
         </Animated.View>
         {error && error.includes('NIC') ? <Text style={{ color: 'red', textAlign: 'center', marginTop: 10 }}>{error}</Text> : null}
 
-        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#D9D9D9', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
+        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#E0E0E0', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
           <TextInput
-            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#D9D9D9', borderRadius: 50 }}
+            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#E0E0E0', borderRadius: 50 }}
             placeholder='Mobile Number'
             placeholderTextColor={'gray'}
             onChangeText={handleMobileChange}
@@ -129,9 +129,9 @@ export default function SignupScreen() {
         </Animated.View>
         {error && error.includes('Mobile') ? <Text style={{ color: 'red', textAlign: 'center', marginTop: 10 }}>{error}</Text> : null}
 
-        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#D9D9D9', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
+        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#E0E0E0', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
           <TextInput
-            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#D9D9D9', borderRadius: 50 }}
+            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#E0E0E0', borderRadius: 50 }}
             placeholder='Email'
             placeholderTextColor={'gray'}
             onChangeText={handleEmailChange}
@@ -139,9 +139,9 @@ export default function SignupScreen() {
         </Animated.View>
         {error && error.includes('email') ? <Text style={{ color: 'red', textAlign: 'center', marginTop: 10 }}>{error}</Text> : null}
 
-        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#D9D9D9', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
+        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#E0E0E0', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(200).springify()}>
           <TextInput
-            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#D9D9D9', borderRadius: 50 }}
+            style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#E0E0E0', borderRadius: 50 }}
             placeholder='Password'
             placeholderTextColor={'gray'}
             onChangeText={handlePasswordChange}
@@ -149,7 +149,7 @@ export default function SignupScreen() {
         </Animated.View>
         <Text style={{ color: error === 'Weak password' ? 'red' : 'green', textAlign: 'center', marginTop: 10 }}>{error === 'Weak password' || error === 'Strong password' ? error : ''}</Text>
 
-        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#022043', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(400).springify()}>
+        <Animated.View style={{ height: 42, width: '90%', backgroundColor: '#080742', marginLeft: '5%', borderRadius: 50, marginTop: 10 }} entering={FadeInDown.delay(400).springify()}>
           <TouchableOpacity onPress={handleSubmit}>
             <Text style={{ padding: 7.5, paddingLeft: 15, textAlign: 'center', color: 'white', fontSize: 20 }}>SignUp</Text>
             <Text>{message}</Text>

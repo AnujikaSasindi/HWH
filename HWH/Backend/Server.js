@@ -113,14 +113,14 @@ const userRouter = require("./routes/users.js");
 const operatorRouter = require("./routes/operators.js");
 const vehicleRouter = require("./routes/vehicles.js");
 const ticketRouter = require("./routes/tickets.js");
-const cardRouter = require("./routes/cards.js");
+//const cardRouter = require("./routes/cards.js");
 
 // Use routes
 app.use("/user",userRouter);
 app.use("/operator", operatorRouter);
 app.use("/vehicle",vehicleRouter);
 app.use("/ticket",ticketRouter);
-app.use("/card",cardRouter);
+//app.use("/card",cardRouter);
 
 // Listen to the main PORT
 app.listen(PORT,() =>{

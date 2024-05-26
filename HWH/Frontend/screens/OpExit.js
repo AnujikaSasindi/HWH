@@ -154,7 +154,7 @@ export default function OpExit() {
           onValueChange={(itemValue) => handleGateChange(itemValue)}
           
         >
-          <Picker.Item label="Select gate" value="" color='#002043' />
+          <Picker.Item label="Select gate" value="" color={'gray'} />
           <Picker.Item label="imaduwa" value="imaduwa" color='#002043' />
           <Picker.Item label="pinnaduwa" value="pinnaduwa" color='#002043' />
           <Picker.Item label="beddegama" value="beddegama" color='#002043' />
@@ -175,7 +175,7 @@ export default function OpExit() {
 )}
 <TouchableOpacity style={{alignSelf:'center'}} onPress={()=> navigation.push('OpWS')}>
         <View style={{backgroundColor: '#080742',marginTop:40,borderRadius:60,alignItems:'center',height:40,width:300}}>
-          <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>payment Status</Text>
+          <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>Payment Status</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -227,12 +227,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignSelf: 'center',
     borderRadius: 20,
-    height: 70,
-    padding: 8,
+    //height: 70,
+    padding: 10,
   },
   picker: {
-    height: 40,
-    width: 250,
+    height: 50,
+    width: 280,
     alignSelf: 'center',
     //marginTop: 20,
   },

@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'center',
     marginVertical: 'auto',
-    bottom: 20,
+    bottom: 0,
   },
   buttonContainer: {
     marginBottom: 150,

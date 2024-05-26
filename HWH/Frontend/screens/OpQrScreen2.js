@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -119,15 +120,16 @@ export default function OpQrScreen2() {
   }
 
   return (
-    <View style={{ marginTop: 25 }}>
+    <View style={{flex: 1, backgroundColor: 'white' , marginTop:25 }}>
+      <StatusBar style='dark'/>
       {/* Your header component */}
       <View style={styles.header}>
-        <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('OpQrpage')} />
-        <Text style={styles.headerText}>HighWay Hub</Text>
-        <TouchableOpacity onPress={() => navigation.push('operator')}>
-          <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
-        </TouchableOpacity>
-      </View>
+          <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
+          <Text style={styles.title}>HighWay Hub</Text>
+          <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.push('user')}>
+            <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
+          </TouchableOpacity>
+        </View>
 
       <View style={{ marginTop: -15, alignItems: 'center' }}>
         <View style={styles.barcodebox}>
@@ -150,11 +152,11 @@ export default function OpQrScreen2() {
           onValueChange={(itemValue) => handleGateChange(itemValue)}
           
         >
-          <Picker.Item label="Select gate" value="" color='#002043' />
-          <Picker.Item label="imaduwa" value="imaduwa" color='#002043' />
-          <Picker.Item label="pinnaduwa" value="pinnaduwa" color='#002043' />
-          <Picker.Item label="kokmaduwa" value="kokmaduwa" color='#002043' />
-          
+          <Picker.Item label="Select gate" value="" color={'gray'} />
+          <Picker.Item label="Imaduwa" value="imaduwa" color='#002043' /> 
+          <Picker.Item label="Pinnaduwa" value="pinnaduwa" color='#002043' />
+          <Picker.Item label="Kokmaduwa" value="kokmaduwa" color='#002043' />
+        
         </Picker>
       </View>
     
@@ -178,14 +180,13 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
+    backgroundColor: '#080742',
+    padding: 15,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#080742',
-    padding: 10,
   },
-  headerText: {
+  title: {
     color: '#FF6F00',
-    fontWeight: 'bold',
     fontSize: 20,
   },
   profileImage: {
@@ -204,21 +205,21 @@ const styles = StyleSheet.create({
     width: 300,
     overflow: 'hidden',
     borderRadius: 10,
-    backgroundColor: 'blue',
+    backgroundColor: '#080742',
     marginTop: 80,
   },
   pickerContainer: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#E0E0E0',
     width: 300,
     marginTop: 50,
     alignSelf: 'center',
     borderRadius: 20,
-    height: 70,
-    padding: 5,
+    //height: 70,
+    padding: 10,
   },
   picker: {
-    height: 40,
-    width: 250,
+    height: 50,
+    width: 280,
     alignSelf: 'center',
     //marginTop: 20,
   },
