@@ -39,7 +39,7 @@ export default function OpQrScreen1() {
           selectedValue={selectedOption}
           onValueChange={(itemValue) => handleOptionChange(itemValue)}
         >
-          <Picker.Item label="Select option" value="" color='#080742' />
+          <Picker.Item label="Select Gate Type" value="" color={'gray'} />
           <Picker.Item label="Operator in Entrance" value="Operator in Entrance" color='#080742' />
           <Picker.Item label="Operator in Exit" value="Operator in Exit" color='#080742' />
         </Picker>
@@ -47,7 +47,7 @@ export default function OpQrScreen1() {
 
       <TouchableOpacity style={styles.scanButton} onPress={handleScanQR}>
         <View style={styles.scanButtonContent}>
-          <Icon name="qrcode" size={20} color="#080742" style={styles.qrIcon} />
+          <Icon name="qrcode" size={20} color={'gray'} style={styles.qrIcon} />
           <Text style={styles.scanButtonText}>Scan QR Code</Text>
         </View>
       </TouchableOpacity>
@@ -79,21 +79,21 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     backgroundColor: '#E0E0E0',
-    width: 310,
+    width: 300,
     marginTop: 80,
     alignSelf: 'center',
     borderRadius: 20,
-    height: 70,
-    padding: 8,
+    //height: 50,
+    padding: 10,
   },
   picker: {
-    height: 40,
-    width: 250,
+    height: 50,
+    width: 280,
     alignSelf: 'center',
   },
   scanButton: {
     height: 100,
-    width: 310,
+    width: 300,
     marginTop: 20,
     alignSelf: 'center',
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   scanButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#080742',
+    color: 'gray',
   },
   bottomLogoContainer: {
     backgroundColor: '#080742',

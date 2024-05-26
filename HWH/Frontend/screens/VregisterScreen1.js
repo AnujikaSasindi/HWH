@@ -66,61 +66,62 @@ const VregisterScreen1 = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1, backgroundColor: 'white' , marginTop:25}}>
         <StatusBar style='dark'/>
         <View style={styles.header}>
-        <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
-        <Text style={styles.title}>HighWay Hub</Text>
-        <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.push('user')}>
-          <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
-        </TouchableOpacity>
-      </View>
+          <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
+          <Text style={styles.title}>HighWay Hub</Text>
+          <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.push('user')}>
+            <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
+          </TouchableOpacity>
+        </View>
 
-      <View className="w-full p-1 mt-5 flex-row justify-center" style={{backgroundColor:'#FF6F00'}}>
-        <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>Vehicle Registration</Text>
-      </View>
+        <View className="w-full p-1 mt-5 flex-row justify-center" style={{backgroundColor:'#FF6F00'}}>
+          <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>Vehicle Registration</Text>
+        </View>
 
-      <View style={{ alignItems: 'center', marginTop: 60 }}>
-        <Icon name='car' size={150} color={'#191970'} />
-      </View>
+        <View style={{ alignItems: 'center', marginTop: 60 }}>
+          <Icon name='car' size={150} color={'#080742'} />
+        </View>
 
         {vehicles.map((vehicle, index) => (
           <View key={index}>
             {index > 0 && (
-  <View style={{ alignItems: 'center', marginTop: 60 }}>
-    <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>Next Vehicle</Text>
-  </View>
-)}
+              <View style={{ alignItems: 'center', marginTop: 60 }}>
+                <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>Next Vehicle</Text>
+              </View>
+            )}
 
 
-            <View style={{ backgroundColor: '#C0C0C0', padding: 10, borderRadius: 20, alignSelf: 'center', marginTop: 40, width: 300 }}>
-              <TextInput
-                placeholder='Register Number'
-                placeholderTextColor={'gray'}
-                onChangeText={(value) => handleChange(index, 'register_no', value)}
-              />
+              <View style={{ backgroundColor: '#E0E0E0', padding: 10, borderRadius: 20, alignSelf: 'center', marginTop: 40, width: 300,paddingLeft:25 }}>
+                <TextInput
+                  placeholder='Register Number'
+                  placeholderTextColor={'gray'}
+                  onChangeText={(value) => handleChange(index, 'register_no', value)}
+                  style={{fontSize:15, color:'#080742'}}
+                />
+              </View>
+
+              <View style={{ backgroundColor: '#E0E0E0', padding: 10, borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30 }}>
+                <Picker
+                  selectedValue={vehicle.sv}
+                  onValueChange={(value) => handleChange(index, 'sv', value)}
+                  style={{ height: 50, width: 280 }}
+                >
+                  <Picker.Item label="Select Type" value="" color={'gray'} />
+                  <Picker.Item label="Type 1" value="type 1" color='#080742' />
+                  <Picker.Item label="Type 2" value="type 2" color='#080742' />
+                  <Picker.Item label="Type 3" value="type 3" color='#080742' />
+                </Picker>
+              </View>
             </View>
-
-            <View style={{ backgroundColor: '#C0C0C0', padding: 10, borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30 }}>
-              <Picker
-                selectedValue={vehicle.sv}
-                onValueChange={(value) => handleChange(index, 'sv', value)}
-                style={{ height: 50, width: 250, alignSelf:'center', marginTop:5 }}
-              >
-                <Picker.Item label="Select Type" value="" color='#002043' />
-                <Picker.Item label="Type 1" value="type 1" color='#002043' />
-                <Picker.Item label="Type 2" value="type 2" color='#002043' />
-                <Picker.Item label="Type 3" value="type 3" color='#002043' />
-              </Picker>
-            </View>
-          </View>
         ))}
 
-        <TouchableOpacity onPress={addVehicle} style={{ backgroundColor: '#191970', borderRadius: 10, paddingVertical: 10, paddingHorizontal: 20, marginTop: 50, width: 300 ,alignSelf:'center'}}>
+        <TouchableOpacity onPress={addVehicle} style={{ backgroundColor: '#080742', borderRadius: 60, paddingVertical: 10, paddingHorizontal: 20, marginTop: 50, width: 300 ,alignSelf:'center'}}>
           <Text style={{ color: 'white', fontWeight: 'bold', alignSelf: 'center' }}>Add Vehicle</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: '#191970', borderRadius: 10, paddingVertical: 10, paddingHorizontal: 20, marginTop: 20, width: 300,alignSelf:'center'}}>
+        <TouchableOpacity onPress={handleSubmit} style={{ backgroundColor: '#080742', borderRadius: 60, paddingVertical: 10, paddingHorizontal: 20, marginTop: 20, width: 300,alignSelf:'center'}}>
           <Text style={{ color: 'white', fontWeight: 'bold', alignSelf: 'center' }}>Register All Vehicles</Text>
         </TouchableOpacity>
 

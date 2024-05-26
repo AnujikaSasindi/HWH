@@ -212,19 +212,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 10,
     color: '#080742',
-    
+    textAlign: 'center',
   },
   ticketText3: {
     fontSize: 16,
     marginTop: 10,
-    paddingLeft:50,
+    textAlign: 'center',
     color: '#080742',
     
   },
   ticketText4: {
     fontSize: 16,
     marginTop: 10,
-    paddingLeft:100,
+    textAlign: 'center',
     color: '#080742',
     
   },

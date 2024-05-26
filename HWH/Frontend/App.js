@@ -36,7 +36,7 @@ function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='StartingScreen' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='PaymentAmount' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingScreen" component={StartingScreen} />
         <Stack.Screen name="Begin" component={BeginScreen} />
         <Stack.Screen name="SignUp" component={SignupScreen} />

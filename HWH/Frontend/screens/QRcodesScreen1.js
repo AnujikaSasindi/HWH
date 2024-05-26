@@ -129,18 +129,18 @@ export default function QRcodesScreen1() {
         <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>QR Codes</Text>
       </View>
 
-      <View style={{ borderColor: '#C0C0C0', borderWidth: 2, borderRadius: 20, overflow: 'hidden', backgroundColor: '#C0C0C0' ,marginTop:20,width:300,alignSelf:'center'}}>
-  <Picker
-    selectedValue={selectedVehicle}
-    onValueChange={(itemValue, itemIndex) => handleChangeVehicle(itemValue)}
-    style={{ height: 50, width: 300, color: '#080742' }}
-  >
-    <Picker.Item label="Select Vehicle" value={null} color="#C0C0C0" />
-    {vehicles.map((vehicle, index) => (
-      <Picker.Item key={index} label={`${vehicle.register_no} `} value={vehicle} color="#080742" />
-    ))}
-  </Picker>
-</View>
+      <View style={{ backgroundColor: '#E0E0E0', padding: 10, borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30}}>
+        <Picker
+          selectedValue={selectedVehicle}
+          onValueChange={(itemValue, itemIndex) => handleChangeVehicle(itemValue)}
+          style={{ height: 50, width: 280 }} //editing here by the current cut...[margin added]
+        >
+          <Picker.Item label="Select Vehicle" value={null} color={'gray'} />
+          {vehicles.map((vehicle, index) => (
+            <Picker.Item key={index} label={`${vehicle.register_no} `} value={vehicle} color="#080742" />
+          ))}
+        </Picker>
+      </View>
 
 
 
