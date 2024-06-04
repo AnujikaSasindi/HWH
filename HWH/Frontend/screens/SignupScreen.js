@@ -76,7 +76,7 @@ export default function SignupScreen() {
 
   const handleSubmit = async () => {
     try {
-        const response = await axios.post('http:/192.168.43.116:8070/user/add', userInfo);
+        const response = await axios.post('http://192.168.43.135:8070/user/add', userInfo); //http:/192.168.43.116
         setMessage('Signup successful!');
         setTimeout(() => {
             navigation.push('Login');

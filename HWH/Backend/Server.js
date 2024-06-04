@@ -19,7 +19,7 @@ const STRIPE_PORT = process.env.PORT || 8080;
 app.post('/pay', async(req, res) => {
     try {
       const paymentIntent = await stripe.paymentIntents.create({
-          amount: 1099,
+          amount: 20000,
           currency: "USD",
           payment_method_types: ["card"],
       });

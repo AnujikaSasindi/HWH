@@ -20,7 +20,7 @@ export default function UserProfileScreen() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http:/192.168.43.116:8070/user/userdata');
+        const response = await axios.get('http://192.168.43.135:8070/user/userdata');
         setUserData(response.data);
         setLoading(false);
       } catch (error) {

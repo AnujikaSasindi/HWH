@@ -39,7 +39,7 @@ export default function OpExit() {
       const [vehicleNumber] = qrData.split(' ,').map(part => part.trim()); // Split the vehicleData into vehicleNumber
       
   
-      const response = await fetch('http://192.168.43.116:8070/vehicle/compare-Exit-data', {
+      const response = await fetch('http://192.168.43.135:8070/vehicle/compare-Exit-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export default function OpExit() {
       return;
     }
   
-    fetch('http://192.168.43.116:8070/vehicle/store-Exit-gate', {
+    fetch('http://192.168.43.135:8070/vehicle/store-Exit-gate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -155,10 +155,10 @@ export default function OpExit() {
           
         >
           <Picker.Item label="Select gate" value="" color={'gray'} />
-          <Picker.Item label="imaduwa" value="imaduwa" color='#002043' />
-          <Picker.Item label="pinnaduwa" value="pinnaduwa" color='#002043' />
-          <Picker.Item label="beddegama" value="beddegama" color='#002043' />
-          <Picker.Item label="kokmaduwa" value="kokmaduwa" color='#002043' />
+          <Picker.Item label="Imaduwa" value="imaduwa" color='#002043' />
+          <Picker.Item label="Pinnaduwa" value="pinnaduwa" color='#002043' />
+          <Picker.Item label="Beddegama" value="beddegama" color='#002043' />
+          <Picker.Item label="Kokmaduwa" value="kokmaduwa" color='#002043' />
         </Picker>
         
       </View>

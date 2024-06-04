@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import Animated, { FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import {URL} from '@env';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -31,7 +32,7 @@ export default function LoginScreen() {
 */
 
   const handleSubmit = () => {
-    axios.post('http:/192.168.43.116:8070/user/login', { NIC, password })
+    axios.post('http://192.168.43.135:8070/user/login', { NIC, password }) //http:/192.168.43.116:8070/user/login
       .then(result => {
        
         console.log(result);

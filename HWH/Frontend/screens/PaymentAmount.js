@@ -18,7 +18,7 @@ const PaymentAmount = () => {
   const paying = async () => {
       try {
         //sending request
-        const response = await fetch ('http:/192.168.43.116:8070/pay', { //here, put your own phone's IP address to make it work.... http://--:--:--:--:8080/pay
+        const response = await fetch ('http:/192.168.43.135:8070/pay', { //here, put your own phone's IP address to make it work.... http://--:--:--:--:8080/pay
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const PaymentAmount = () => {
         <Text style={{color:'#080742',fontSize:18, textAlign:"center", padding:5,fontWeight:"bold"}}>Payment</Text>
       </View>
       <Text style={{marginTop: 20, marginLeft:20, fontSize:20, color:'#080742', marginBottom:30}}> Amount: </Text>
-      <Text style={{marginTop: 30, textAlign: 'center', color:'#080742', fontSize:30, marginBottom:80}}> RS. {ticketAmount}</Text>
+      <Text style={{marginTop: 30, textAlign: 'center', color:'#080742', fontSize:30, marginBottom:80}}> RS. {ticketAmount}</Text> 
       {/*<Text style={{marginTop: 30, color:'#080742', fontSize:15, marginLeft:20,}}>Pay by:</Text>*/}
       
       

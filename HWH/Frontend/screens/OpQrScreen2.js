@@ -37,7 +37,7 @@ export default function OpQrScreen2() {
 
       const [qrData, type] = data.split(',').map(part => part.trim()); // Remove leading and trailing whitespace
       
-      const response = await fetch('http://192.168.43.116:8070/vehicle/compare-data', {
+      const response = await fetch('http://192.168.43.135:8070/vehicle/compare-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default function OpQrScreen2() {
       return;
     }
 
-    fetch('http://192.168.43.116:8070/vehicle/store-gate', {
+    fetch('http://192.168.43.135:8070/vehicle/store-gate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function OpQrScreen2() {
       <StatusBar style='dark'/>
       {/* Your header component */}
       <View style={styles.header}>
-          <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
+          <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('OpQrpage')} />
           <Text style={styles.title}>HighWay Hub</Text>
           <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.push('user')}>
             <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
