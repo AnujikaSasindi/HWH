@@ -1,3 +1,4 @@
+
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar'
@@ -15,7 +16,7 @@ export default function LoginScreenOP() {
   
 
   const handleSubmit = () => {
-    axios.post('http:/192.168.43.116:8070/operator/loginOp', {OperatorPin, Password })
+    axios.post('http:/192.168.43.135:8070/operator/loginOp', {OperatorPin, Password })
       .then(result => {
        
         console.log(result);
@@ -50,9 +51,9 @@ export default function LoginScreenOP() {
             <Animated.View style={{height:42, width:'90%', backgroundColor:'#D9D9D9', marginLeft:'5%',borderRadius:50, marginTop:120}} entering={FadeInDown.duration(1000).springify()}>
             <TextInput
             style={{ padding: 10, paddingLeft: 15, borderWidth: 0, borderColor: '#D9D9D9', borderRadius: 50 }}
-            placeholder='OperatorPin'
+            placeholder='Operator Pin'
             placeholderTextColor={'gray'}
-            secureTextEntry={true}
+            secureTextEntry={false}
             value={OperatorPin}
             onChangeText={text => setOperatorPin(text)}
           />

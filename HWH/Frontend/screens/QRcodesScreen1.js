@@ -47,7 +47,7 @@ export default function QRcodesScreen1() {
 
   const fetchEntranceFromBackend = async () => {
     try {
-      const response = await axios.post('http://192.168.43.116:8070/vehicle/get-entrance', { Vehicle_number: selectedVehicle.register_no },{
+      const response = await axios.post('http://192.168.43.135:8070/vehicle/get-entrance', { Vehicle_number: selectedVehicle.register_no },{
       timeout: 3000 // Set timeout to 3 seconds (adjust as needed)
     });
       if (response.data.isValid) {
@@ -70,7 +70,7 @@ export default function QRcodesScreen1() {
 
   const fetchExitFromBackend = async () => {
     try {
-      const response = await axios.post('http://192.168.43.116:8070/vehicle/get-exit', { Vehicle_number: selectedVehicle.register_no },{
+      const response = await axios.post('http://192.168.43.135:8070/vehicle/get-exit', { Vehicle_number: selectedVehicle.register_no },{
         timeout: 2000 
       });
       if (response.data.isValid) {
@@ -93,7 +93,7 @@ export default function QRcodesScreen1() {
 
   const checkTicketValidity = async () => {
     try {
-      const response = await axios.post('http://192.168.43.116:8070/ticket/check-ticket', { Entrance, Exit });
+      const response = await axios.post('http://192.168.43.135:8070/ticket/check-ticket', { Entrance, Exit });
       const { isValid, amount } = response.data;
       if (isValid) {
         setTicketAmount(amount);
@@ -133,7 +133,7 @@ export default function QRcodesScreen1() {
         <Picker
           selectedValue={selectedVehicle}
           onValueChange={(itemValue, itemIndex) => handleChangeVehicle(itemValue)}
-          style={{ height: 50, width: 280 }} //editing here by the current cut...[margin added]
+          style={{ height: 50, width: 280 }} 
         >
           <Picker.Item label="Select Vehicle" value={null} color={'gray'} />
           {vehicles.map((vehicle, index) => (
@@ -160,7 +160,7 @@ export default function QRcodesScreen1() {
       {ticketAmount !== null && (
         <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.push('PaymentAmount')}>
           <View style={{ backgroundColor: '#080742', marginTop: 20, borderRadius: 60, alignItems: 'center', height: 40, width: 300 }}>
-            <Text style={{ color: 'white', fontSize: 18, marginTop: 5, fontWeight: 'bold' }}>Pay RS.{ticketAmount}</Text>
+            <Text style={{ color: 'white', fontSize: 18, marginTop: 5, fontWeight: 'bold' }}>Continue</Text>
           </View>
         </TouchableOpacity>
       )}

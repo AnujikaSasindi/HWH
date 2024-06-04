@@ -47,7 +47,7 @@ const VregisterScreen1 = () => {
           Vehicle_number: register_no,
           Type: sv
         };
-        const response = await axios.post('http:/192.168.43.116:8070/vehicle/addVehicle', vehicleInfo);
+        const response = await axios.post('http://192.168.43.135:8070/vehicle/addVehicle', vehicleInfo);
         return response.data;
       });
   

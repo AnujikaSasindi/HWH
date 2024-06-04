@@ -40,8 +40,8 @@ export default function OpQrScreen1() {
           onValueChange={(itemValue) => handleOptionChange(itemValue)}
         >
           <Picker.Item label="Select Gate Type" value="" color={'gray'} />
-          <Picker.Item label="Operator in Entrance" value="Operator in Entrance" color='#080742' />
-          <Picker.Item label="Operator in Exit" value="Operator in Exit" color='#080742' />
+          <Picker.Item label="Operator at Entrance" value="Operator in Entrance" color='#080742' />
+          <Picker.Item label="Operator at Exit" value="Operator in Exit" color='#080742' />
         </Picker>
       </View>
 

@@ -32,7 +32,7 @@ export default function EditProfileScreen() {
             const updatedUserDataWithUserId = { ...updatedUser, userId };
 
             // Send request with updatedUser data
-            const response = await axios.post('http://192.168.43.116:8070/user/update', updatedUserDataWithUserId, {
+            const response = await axios.post('http://192.168.43.135:8070/user/update', updatedUserDataWithUserId, {
                 withCredentials: true // Send session cookie with the request
                 
             });
@@ -78,13 +78,14 @@ export default function EditProfileScreen() {
           
           <Animated.View entering={FadeInDown.delay(400).springify()}>
             <View style={{paddingLeft:10}}>
-              <Text>change your NIC:</Text>
+              <Text>Change your NIC:</Text>
             </View>
-            <View style={{backgroundColor:'#E0E0E0', margin:15, padding:4,paddingLeft:10,borderRadius:25 }}>
+            <View style={{backgroundColor:'#E0E0E0', width:300,height:40, margin:15,padding:10,marginLeft:30,borderRadius:25,  }}>
             <TextInput 
             value={updatedUser.NIC} 
             onChangeText={(NIC) => setUpdatedUserData({ ...updatedUser, NIC })} 
             placeholder="NIC"
+            style={{marginLeft:15}}
             />
             </View>
           </Animated.View>
@@ -92,13 +93,14 @@ export default function EditProfileScreen() {
 
           <Animated.View entering={FadeInDown.delay(600).springify()}>
             <View style={{paddingLeft:10}}>
-              <Text>change your Mobile Number:</Text>
+              <Text>Change your Mobile Number:</Text>
             </View>
-            <View style={{backgroundColor:'#E0E0E0', margin:15, padding:4,paddingLeft:10,borderRadius:25}}>
+            <View style={{backgroundColor:'#E0E0E0', width:300,height:40, margin:15,padding:10,marginLeft:30,borderRadius:25, }}>
             <TextInput 
             value={updatedUser.Mobile} 
             onChangeText={(Mobile) => setUpdatedUserData({ ...updatedUser, Mobile })} 
             placeholder="Mobile"
+            style={{marginLeft:15}}
             />
             </View>
           </Animated.View>
@@ -106,13 +108,14 @@ export default function EditProfileScreen() {
 
           <Animated.View entering={FadeInDown.delay(600).springify()}>
             <View style={{paddingLeft:10}}>
-              <Text>change your Password :</Text>
+              <Text>Change your Password :</Text>
             </View>
-            <View style={{backgroundColor:'#E0E0E0', margin:15, padding:4,paddingLeft:10,borderRadius:25}}>
+            <View style={{backgroundColor:'#E0E0E0', width:300,height:40, margin:15,padding:10,marginLeft:30,borderRadius:25, }}>
             <TextInput 
             value={updatedUser.password} 
             onChangeText={(password) => setUpdatedUserData({ ...updatedUser, password })} 
-            placeholder="password"
+            placeholder="Password"
+            style={{marginLeft:15}}
             />
             </View>
           </Animated.View>
