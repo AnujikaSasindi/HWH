@@ -19,8 +19,8 @@ const STRIPE_PORT = process.env.PORT || 8080;
 app.post('/pay', async(req, res) => {
     try {
       const paymentIntent = await stripe.paymentIntents.create({
-          amount: 20000,
-          currency: "USD",
+          amount:15000,
+          currency: "LKR",
           payment_method_types: ["card"],
       });
       const clientSecret = paymentIntent.client_secret;
@@ -30,6 +30,7 @@ app.post('/pay', async(req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 })
+
 
 // Use the required dependencies
 app.use(cors(

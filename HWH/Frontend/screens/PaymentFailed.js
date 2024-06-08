@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function PaymentStatus() {
+export default function PaymentFailed() {
   const navigation=useNavigation();
   return (
       <View className="bg-white h-full w-full" style={{marginTop:25}}>
@@ -25,18 +25,18 @@ export default function PaymentStatus() {
         <View style={styles.circleContainer}>
           <View style={styles.circle} />
             <View style={styles.TickContainer}>
-              <Text style={styles.tickMark}>✔</Text>
+              <Text style={styles.tickMark}>X</Text>
             </View>
           </View>
 
           <View style={styles.container}>
-            <Text style={[styles.thirdText]}>Payment Completed</Text>
+            <Text style={[styles.thirdText]}>Payment Incomplete</Text>
           </View>
 
           <View style={{alignItems:'center',flex:0.5}}>
-            <TouchableOpacity style={{padding:20}} onPress={()=> navigation.push('ResentTicket')}>
+            <TouchableOpacity style={{padding:20}} onPress={()=> navigation.push('PaymentAmount')}>
               <View style={{backgroundColor: '#080742',borderRadius:60,alignItems:'center',height:40,width:300}}>
-                  <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>View the Ticket</Text>
+                  <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>Try Again</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
       borderRadius: 125, 
       backgroundColor: '#E0E0E0',
       borderWidth: 2, 
-      borderColor:'#00D100',
+      borderColor:'#D10000',
     },
 
     tickMark: {
       fontSize: 80,
-      color: '#00D100',
+      color: '#D10000',
     },
 
     TickContainer: {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     thirdText: {
       marginBottom: 10,
       fontSize: 20,
-      color: '#00D100',
+      color: '#D10000',
       fontWeight: 500
     },
 
@@ -113,6 +113,3 @@ const styles = StyleSheet.create({
     
 
 });
-
-
-

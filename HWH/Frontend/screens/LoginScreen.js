@@ -1,17 +1,22 @@
+//require("dotenv").config(); 
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Animated, { FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import {URL} from '@env';
+import CONFIG from '../config';
+
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  
+  const URL = CONFIG.CONNECTION_URL;
+
   const [NIC, setNIC] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  
 
   /*const handleSubmit = () => {
   axios.post('http://192.168.43.116:8070/user/login', { NIC, password })
@@ -32,15 +37,16 @@ export default function LoginScreen() {
 */
 
   const handleSubmit = () => {
-    axios.post('http://192.168.43.135:8070/user/login', { NIC, password }) //http:/192.168.43.116:8070/user/login
+    axios.post(`${URL}/user/login`, { NIC, password }) //http:/192.168.43.116:8070/user/login
       .then(result => {
        
         console.log(result);
         
        if (result.data === "Success") {
         
-           setMessage('Login successful!');
+          setMessage('Login successful!');
           navigation.navigate('Home');
+          
         }else {
           setMessage('Invalid credentials. Please try again.');
         }

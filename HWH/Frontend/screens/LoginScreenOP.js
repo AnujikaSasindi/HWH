@@ -1,22 +1,23 @@
-
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar'
 import Animated,{ FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import CONFIG from '../config';
 
 export default function LoginScreenOP() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
 
- const [OperatorPin, setOperatorPin] = useState('');
+  const [OperatorPin, setOperatorPin] = useState('');
   const [Password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
   
 
   const handleSubmit = () => {
-    axios.post('http:/192.168.43.135:8070/operator/loginOp', {OperatorPin, Password })
+    axios.post(`${URL}/operator/loginOp`, {OperatorPin, Password })
       .then(result => {
        
         console.log(result);

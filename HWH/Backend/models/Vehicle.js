@@ -19,19 +19,16 @@ const vehicleSchema = new mongoose.Schema({
         type:String
     },
 
-    
+    USERID:{   //
+        type:String //
+    },  //
+
     
 }, {
     timestamps: true
 });
 
-
-
-
-
-
 vehicleSchema.index({ Vehicle_number: 1 });
-
 
 const Vehicle = mongoose.model("Vehicle_Registration", vehicleSchema);
 

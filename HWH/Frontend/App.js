@@ -3,6 +3,7 @@ import { View, Text,props } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StripeProvider } from '@stripe/stripe-react-native';
+import { NumberProvider } from './NumberContext'; //
 import StartingScreen from './screens/StartingScreen';
 import BeginScreen from './screens/BeginScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -25,8 +26,7 @@ import EditProfileScreen from './screens/EditProfileScreen';
 import OPProfileScreen from './screens/OPProfileScreen';
 import OpExit from './screens/OpExit.js';
 import WaitingScreen  from './screens/WaitingScreen.js';
-
-
+import PaymentFailed from './screens/PaymentFailed';
 
 
 const Stack = createNativeStackNavigator();
@@ -36,7 +36,7 @@ function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='StartingScreen' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='PaymentF' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingScreen" component={StartingScreen} />
         <Stack.Screen name="Begin" component={BeginScreen} />
         <Stack.Screen name="SignUp" component={SignupScreen} />
@@ -60,7 +60,8 @@ function App() {
         <Stack.Screen name="operator" component={OPProfileScreen}/>
         <Stack.Screen name="OpExit" component={OpExit}/>
         <Stack.Screen name="OpWS" component={WaitingScreen}/>
-       
+        <Stack.Screen name="PaymentF" component={PaymentFailed} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -68,7 +69,9 @@ function App() {
 
 export default () => (
   <StripeProvider publishableKey="pk_test_51P3ZJyHvU44g3stxbCmjZt5NT4rJP93lBN6a8Z9mpvhW1kbTOfyYjM5wNl3EYhfAH82gnqLn3fGnqyRIMhyU3cxa00qWnvEUKx">
-    <App/>
+    <NumberProvider>
+       <App/>
+    </NumberProvider>
   </StripeProvider>
 );
 

@@ -6,10 +6,13 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
+import CONFIG from '../config';
 
 
 export default function OpExit() {
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
+
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned');
@@ -39,7 +42,7 @@ export default function OpExit() {
       const [vehicleNumber] = qrData.split(' ,').map(part => part.trim()); // Split the vehicleData into vehicleNumber
       
   
-      const response = await fetch('http://192.168.43.135:8070/vehicle/compare-Exit-data', {
+      const response = await fetch(`${URL}/vehicle/compare-Exit-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +82,7 @@ export default function OpExit() {
       return;
     }
   
-    fetch('http://192.168.43.135:8070/vehicle/store-Exit-gate', {
+    fetch(`${URL}/vehicle/store-Exit-gate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

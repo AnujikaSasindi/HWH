@@ -4,9 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import Animated, { FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import CONFIG from '../config';
+
 
 export default function SignupScreen() {
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
 
   const [userInfo, setUserInfo] = useState({
     NIC: '',
@@ -76,7 +79,7 @@ export default function SignupScreen() {
 
   const handleSubmit = async () => {
     try {
-        const response = await axios.post('http://192.168.43.135:8070/user/add', userInfo); //http:/192.168.43.116
+        const response = await axios.post(`${URL}/user/add`, userInfo); //http:/192.168.43.116
         setMessage('Signup successful!');
         setTimeout(() => {
             navigation.push('Login');

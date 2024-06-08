@@ -8,9 +8,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
 import QRCode from 'react-native-qrcode-svg';
 import axios from 'axios';
+import CONFIG from '../config';
 
 export default function QRcodesScreen1() {
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
+
   const [vehicles, setVehicles] = useState([]);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [Entrance, setEntrance] = useState('');
@@ -47,7 +50,7 @@ export default function QRcodesScreen1() {
 
   const fetchEntranceFromBackend = async () => {
     try {
-      const response = await axios.post('http://192.168.43.135:8070/vehicle/get-entrance', { Vehicle_number: selectedVehicle.register_no },{
+      const response = await axios.post(`${URL}/vehicle/get-entrance`, { Vehicle_number: selectedVehicle.register_no },{
       timeout: 3000 // Set timeout to 3 seconds (adjust as needed)
     });
       if (response.data.isValid) {
@@ -70,7 +73,7 @@ export default function QRcodesScreen1() {
 
   const fetchExitFromBackend = async () => {
     try {
-      const response = await axios.post('http://192.168.43.135:8070/vehicle/get-exit', { Vehicle_number: selectedVehicle.register_no },{
+      const response = await axios.post(`${URL}/vehicle/get-exit`, { Vehicle_number: selectedVehicle.register_no },{
         timeout: 2000 
       });
       if (response.data.isValid) {
@@ -93,7 +96,7 @@ export default function QRcodesScreen1() {
 
   const checkTicketValidity = async () => {
     try {
-      const response = await axios.post('http://192.168.43.135:8070/ticket/check-ticket', { Entrance, Exit });
+      const response = await axios.post(`${URL}/ticket/check-ticket`, { Entrance, Exit });
       const { isValid, amount } = response.data;
       if (isValid) {
         setTicketAmount(amount);
