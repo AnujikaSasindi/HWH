@@ -4,21 +4,20 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CONFIG from '../config';
+
 
 const PaymentAmount = () => {
   const navigation = useNavigation();
-  const stripe = useStripe();
-  
-  const [ticketAmount, setTicketAmount] = useState(null);
-  
+  const URL = CONFIG.CONNECTION_URL;
 
-  
-  
-  
+  const stripe = useStripe();
+  const [ticketAmount, setTicketAmount] = useState(null);
+
   const paying = async () => {
       try {
         //sending request
-        const response = await fetch ('http:/192.168.43.135:8070/pay', { //here, put your own phone's IP address to make it work.... http://--:--:--:--:8080/pay
+        const response = await fetch (`${URL}/pay`, { //here, put your own phone's IP address to make it work.... http://--:--:--:--:8080/pay
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -44,11 +43,13 @@ const PaymentAmount = () => {
         await AsyncStorage.setItem('paymentStatus', 'Payment Completed, Thank you!');
         
         Alert.alert("Payment Complete, Thank you!");
+        navigation.navigate('PaymentStatus');
       
       } catch (err){
           console.error(err);
           await AsyncStorage.setItem('paymentStatus', 'Payment Incomplete');
           Alert.alert("Something went wrong, try again later!");
+          navigation.navigate('PaymentF');
       }
   }
 
@@ -91,11 +92,11 @@ const PaymentAmount = () => {
     </View>
     
     <View style={{marginBottom:80}}>
+    </View>
 
-    </View>
-    <View style={{width:'70%' , left:'15%', color:"#fff"}}>
+    {/*<View style={{width:'70%' , left:'15%', color:"#fff"}}>
       <Button title="Go Back To Home" onPress={()=> navigation.push('Home')} color="#E0E0E0"/>
-    </View>
+  </View>*/}
 
     </View>
   );

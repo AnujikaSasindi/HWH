@@ -5,10 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
+import CONFIG from '../config';
 
 const VregisterScreen1 = () => {
   const [vehicles, setVehicles] = useState([{ register_no: '', sv: '' }]);
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
+
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -45,9 +48,10 @@ const VregisterScreen1 = () => {
   
         const vehicleInfo = {
           Vehicle_number: register_no,
-          Type: sv
+          Type: sv,
+        
         };
-        const response = await axios.post('http://192.168.43.135:8070/vehicle/addVehicle', vehicleInfo);
+        const response = await axios.post(`${URL}/vehicle/addVehicle`, vehicleInfo);
         return response.data;
       });
   

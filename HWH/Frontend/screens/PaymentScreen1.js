@@ -5,7 +5,7 @@ import Animated,{ FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function SignupScreen() {
+export default function PaymentScreen1() {
     const navigation = useNavigation();
   return (
     <View style={{flex: 1, backgroundColor: 'white' , marginTop:25}}>

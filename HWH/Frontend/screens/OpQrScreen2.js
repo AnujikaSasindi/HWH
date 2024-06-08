@@ -6,10 +6,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CONFIG from '../config';
 
 
 export default function OpQrScreen2() {
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
+
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned');
@@ -37,7 +40,7 @@ export default function OpQrScreen2() {
 
       const [qrData, type] = data.split(',').map(part => part.trim()); // Remove leading and trailing whitespace
       
-      const response = await fetch('http://192.168.43.135:8070/vehicle/compare-data', {
+      const response = await fetch(`${URL}/vehicle/compare-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +80,7 @@ export default function OpQrScreen2() {
       return;
     }
 
-    fetch('http://192.168.43.135:8070/vehicle/store-gate', {
+    fetch(`${URL}/vehicle/store-gate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

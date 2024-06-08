@@ -34,19 +34,18 @@ const VregisterScreen2 = (props) => {
       </View>
 
       <ScrollView>
-      {vehicles.map((vehicle, index) => (
-  <View key={index} style={{ alignItems: 'center', marginTop: 20, marginBottom:10 }}>
-    <View style={{ backgroundColor: '#FF6F00', width: '100%', height: 35, justifyContent: 'center', marginBottom: 20 }}>
-      <Text style={{ color: '#080742', fontSize: 18, alignSelf: 'center', fontWeight:'bold' }}>{vehicle.register_no}</Text>
-    </View>
-    <QRCode
-      value={vehicle.qrData} // Use qrData property of the vehicle
-      size={250}
-      color='#080742'
-    />
-  </View>
-))}
-
+        {vehicles.map((vehicle, index) => (
+          <View key={index} style={{ alignItems: 'center', marginTop: 20, marginBottom:10 }}>
+            <View style={{ backgroundColor: '#FF6F00', width: '100%', height: 35, justifyContent: 'center', marginBottom: 20 }}>
+              <Text style={{ color: '#080742', fontSize: 18, alignSelf: 'center', fontWeight:'bold' }}>{vehicle.register_no}</Text>
+            </View>
+            <QRCode
+              value={vehicle.qrData} // Use qrData property of the vehicle
+              size={250}
+              color='#080742'
+            />
+          </View>
+        ))}
       </ScrollView>
     </View>
   );

@@ -7,20 +7,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Animated,{ FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import React, { useEffect, useState, } from "react";
 import axios from 'axios';
+import CONFIG from '../config';
 
 
 export default function UserProfileScreen() {
+  const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
 
-    const navigation = useNavigation();
-
-    const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://192.168.43.135:8070/user/userdata');
+        const response = await axios.get(`${URL}/user/userdata`);
         setUserData(response.data);
         setLoading(false);
       } catch (error) {
@@ -33,15 +34,9 @@ export default function UserProfileScreen() {
   }, []);
     
     
-  
-
-  
+  return (
     
-   
-
-return (
-    
-<Pressable style={({pressed})=>pressed && styles.pressItem} >
+  <Pressable style={({pressed})=>pressed && styles.pressItem} >
 
     <View>
 
@@ -72,21 +67,22 @@ return (
      {/* //console.log("Button Click")*/}
 
        
-      <TouchableOpacity style={styles.Edit} onPress={()=> navigation.push('Payment1')}>
-        <Icon name="book" size={18} color="#FF6F00" className="pt-8 pl-5 pr-5"/>
-        <Text  style={styles.text3}> Payment details</Text>
+      <TouchableOpacity style={styles.Edit}> 
+        <Icon name="book" size={18} color="#FF6F00" style={styles.text3}/>
+        <Text  style={styles.text4}> Payment details</Text>
       </TouchableOpacity>
               
-
+      <TouchableOpacity style={styles.Edit}> 
+        <Icon name="car" size={18} color="#FF6F00" style={styles.text3}/>
+        <Text  style={styles.text4}>Registered Vehicles</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.Edit} onPress={()=> navigation.push('Edit')}> 
-        <Icon name="pencil" size={18} color="#FF6F00" className="pt-6 pl-5"/>
+        <Icon name="pencil" size={18} color="#FF6F00"  style={styles.text3}/>
         <Text  style={styles.text4}> Edit profile</Text>
       </TouchableOpacity>
-      
 
-
-      <Animated.View style={{alignItems:'center', marginTop:150}} entering={FadeInDown.delay(800).duration(1000).springify()}>
+      <Animated.View style={{alignItems:'center', marginTop:130}} entering={FadeInDown.delay(800).duration(1000).springify()}>
         <TouchableOpacity style={{padding:20}} onPress={()=> navigation.push('Begin')}>
           <View style={{backgroundColor: '#080742',marginTop:50,borderRadius:60,alignItems:'center',height:40,width:300}}>
               <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>Log Out</Text>
@@ -95,23 +91,20 @@ return (
       </Animated.View>
     </View>
 
-</Pressable>
+  </Pressable>
     
-  );
-
-
-}
+);}
 
 const styles=StyleSheet.create({
   text3:{
     marginLeft:25,
-    marginTop:30,
+    marginTop:35,
     fontSize:18
   },
 
   text4:{
     marginLeft:45,
-    marginTop:20,
+    marginTop:30,
     fontSize:18
   },
 

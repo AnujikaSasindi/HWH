@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Animated,{ FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 
 
-
 export default function OPProfileScreen() {
     const navigation = useNavigation();
 

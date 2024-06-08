@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
 
+
 export default function OpQrScreen1() {
   const navigation = useNavigation();
   const [selectedOption, setSelectedOption] = useState(''); // State to store selected option

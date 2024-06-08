@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, Image, TouchableOpacity, Button } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Button,StyleSheet,center } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function WaitingScreen() {
     const navigation = useNavigation();
@@ -11,6 +12,7 @@ export default function WaitingScreen() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+
         // Retrieve payment status from AsyncStorage
         const getPaymentStatus = async () => {
             try {
@@ -26,6 +28,7 @@ export default function WaitingScreen() {
 
         getPaymentStatus();
     }, []);
+
 
     return (
         <View style={{height:'100%', width:'100%', backgroundColor:'white', marginTop:25}}>
@@ -52,8 +55,9 @@ export default function WaitingScreen() {
             </View>
 
             <View style={{width:'70%' , left:'15%', color:"#fff", marginTop:50}}>
-                <Button title="Go Back To Home" onPress={()=> navigation.push('OpQrpage')} color="#E0E0E0"/>
+                <Button title="TEST 123" onPress={()=> navigation.push('test')} color="#E0E0E0"/>
             </View>
         </View>
-    );
+    )
 }
+

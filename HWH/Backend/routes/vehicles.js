@@ -1,27 +1,25 @@
 const router = require("express").Router();
 const Vehicle = require("../models/Vehicle");
 
-
-
-
 //add user (signup)
 router.route("/addVehicle").post((req, res) => {
     
-    const Vehicle_number = req.body.Vehicle_number;
-    const Type = req.body.Type;
-    
-    
-    const newVehicle = new Vehicle({
-        Vehicle_number,
-        Type,
-       
-    })
+  const Vehicle_number = req.body.Vehicle_number;
+  const Type = req.body.Type;
+  
+  
+  const newVehicle = new Vehicle({
+      Vehicle_number,
+      Type,
 
-    newVehicle.save().then(()=>{
-        res.json("Vehicle added")
-    }).catch((err)=>{
-        console.log(err);
-    })
+  })
+
+  newVehicle.save().then(()=>{
+      res.json("Vehicle added")
+  }).catch((err)=>{
+      console.log(err);
+  })
+
 })
 
 //campare data before add entrance gate
@@ -173,9 +171,6 @@ router.route("/get-exit").post(async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching vehicle exit' });
   }
 });
-
-
-
 
 
 

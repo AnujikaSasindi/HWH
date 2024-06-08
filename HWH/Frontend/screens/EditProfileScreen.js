@@ -5,52 +5,53 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Animated,{ FadeIn, FadeInUp, FadeInDown } from 'react-native-reanimated';
 import axios from 'axios';
-
+import CONFIG from '../config';
 
 
 export default function EditProfileScreen() {
   const navigation = useNavigation();
+  const URL = CONFIG.CONNECTION_URL;
 
-   const [updatedUser, setUpdatedUserData] = useState({
-        NIC: '',
-        Mobile: '',
-        password: ''
-    });
-    const [message, setMessage] = useState('');
-    const [userId, setUserId] = useState('');
+  const [updatedUser, setUpdatedUserData] = useState({
+      NIC: '',
+      Mobile: '',
+      password: ''
+  });
+  const [message, setMessage] = useState('');
+  const [userId, setUserId] = useState('');
 
-    // Fetch userId from session or wherever it's stored
-    useEffect(() => {
-        const userIdFromSession = ''; // Implement logic to retrieve userId
-        setUserId(userIdFromSession);
-    }, []);
+  // Fetch userId from session or wherever it's stored
+  useEffect(() => {
+      const userIdFromSession = ''; // Implement logic to retrieve userId
+      setUserId(userIdFromSession);
+  }, []);
 
-    // Function to handle save operation
-    const handleSave = async () => {
-        try {
-            // Include userId in updatedUser data
-            const updatedUserDataWithUserId = { ...updatedUser, userId };
+  // Function to handle save operation
+  const handleSave = async () => {
+      try {
+          // Include userId in updatedUser data
+          const updatedUserDataWithUserId = { ...updatedUser, userId };
 
-            // Send request with updatedUser data
-            const response = await axios.post('http://192.168.43.135:8070/user/update', updatedUserDataWithUserId, {
-                withCredentials: true // Send session cookie with the request
-                
-            });
+          // Send request with updatedUser data
+          const response = await axios.post(`${URL}/user/update`, updatedUserDataWithUserId, {
+              withCredentials: true // Send session cookie with the request
+              
+          });
 
-            //setMessage('Update successful!');
+          //setMessage('Update successful!');
 
-            console.log('Response from backend:', response.data);
-            setMessage(response.data.message);
-           
-            setTimeout(() => {
-              setMessage('');
-                navigation.push('user');
-            }, 3000);
-        } catch (error) {
-            setMessage('Error in update. Please try again.');
-            console.error('Error update:', error);
-        }
-    };
+          console.log('Response from backend:', response.data);
+          setMessage(response.data.message);
+          
+          setTimeout(() => {
+            setMessage('');
+              navigation.push('user');
+          }, 3000);
+      } catch (error) {
+          setMessage('Error in update. Please try again.');
+          console.error('Error update:', error);
+      }
+  };
 
   return (
     < View style={{height:'100%', width:'100%', marginBottom:50}}>

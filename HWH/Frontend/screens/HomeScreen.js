@@ -78,10 +78,10 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style='dark' />
-      <View className="bg-blue-950 w-full p-4 flex-row justify-between" style={{backgroundColor:'#080742',marginTop:30}}>
+      <View className="bg-blue-950 w-full p-3 flex-row justify-between" style={{backgroundColor:'#080742',marginTop:30}}>
         <Text className="text-center font-bold" style={{color:'#FF6F00',fontSize:30}}>   HighWay Hub</Text>
         <TouchableOpacity style={{padding:10, left:15}} onPress={()=> navigation.push('user')}>
-          <Image source={require('../assets/images/profile.jpg')} className="w-6 h-6 rounded-3xl"/>
+          <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage}/>
         </TouchableOpacity>
       </View>
 
@@ -152,7 +152,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 0
   },
-  
+  profileImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
   dotIndicatorContainer: {
     flexDirection: "row",
     justifyContent: "center",
