@@ -84,16 +84,16 @@ const styles = StyleSheet.create({
     marginTop: 80,
     alignSelf: 'center',
     borderRadius: 20,
-    //height: 50,
-    padding: 10,
+    height: 60,
+   
   },
   picker: {
-    height: 50,
+    height: 60,
     width: 280,
     alignSelf: 'center',
   },
   scanButton: {
-    height: 100,
+    height: 80,
     width: 300,
     marginTop: 20,
     alignSelf: 'center',
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   scanButtonContent: {
     backgroundColor: '#E0E0E0',
     flex: 1,
-    borderRadius: 10,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   bottomLogoContainer: {
     backgroundColor: '#080742',
-    height: 150,
+    height: 130,
     width: '100%',
     position: 'absolute',
     bottom: 0,

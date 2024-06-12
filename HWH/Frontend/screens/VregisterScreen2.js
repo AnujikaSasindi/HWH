@@ -26,7 +26,7 @@ const VregisterScreen2 = (props) => {
     < View style={{ flex: 1, backgroundColor: '#fff', marginTop: 25 }}>
       <StatusBar style='dark'/>
       <View style={{ flexDirection: 'row', backgroundColor: '#080742', padding: 15, justifyContent: 'space-between', alignItems: 'center' }}>
-        <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
+        <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Vregister')} />
         <Text style={{ color: '#FF6F00', fontSize: 20 }}>HighWay Hub</Text>
         <TouchableOpacity onPress={() => navigation.push('user')}>
           <Image source={require('../assets/images/profile.jpg')} style={{ width: 30, height: 30, borderRadius: 15 }} />

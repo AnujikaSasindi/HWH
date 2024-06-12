@@ -106,11 +106,11 @@ const VregisterScreen1 = () => {
                 />
               </View>
 
-              <View style={{ backgroundColor: '#E0E0E0', padding: 10, borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30 }}>
+              <View style={{ backgroundColor: '#E0E0E0', borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30, height:60 }}>
                 <Picker
                   selectedValue={vehicle.sv}
                   onValueChange={(value) => handleChange(index, 'sv', value)}
-                  style={{ height: 50, width: 280 }}
+                  style={{ height: 60, width: 280, }}
                 >
                   <Picker.Item label="Select Type" value="" color={'gray'} />
                   <Picker.Item label="Type 1" value="type 1" color='#080742' />

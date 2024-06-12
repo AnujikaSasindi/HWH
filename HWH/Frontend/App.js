@@ -3,7 +3,6 @@ import { View, Text,props } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StripeProvider } from '@stripe/stripe-react-native';
-import { NumberProvider } from './NumberContext'; //
 import StartingScreen from './screens/StartingScreen';
 import BeginScreen from './screens/BeginScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -36,7 +35,7 @@ function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='PaymentF' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingScreen" component={StartingScreen} />
         <Stack.Screen name="Begin" component={BeginScreen} />
         <Stack.Screen name="SignUp" component={SignupScreen} />
@@ -69,9 +68,7 @@ function App() {
 
 export default () => (
   <StripeProvider publishableKey="pk_test_51P3ZJyHvU44g3stxbCmjZt5NT4rJP93lBN6a8Z9mpvhW1kbTOfyYjM5wNl3EYhfAH82gnqLn3fGnqyRIMhyU3cxa00qWnvEUKx">
-    <NumberProvider>
        <App/>
-    </NumberProvider>
   </StripeProvider>
 );
 

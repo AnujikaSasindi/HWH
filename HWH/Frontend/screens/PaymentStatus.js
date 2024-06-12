@@ -3,10 +3,19 @@ import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar'
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function PaymentStatus() {
   const navigation=useNavigation();
+
+  const handlePress = async () => {
+    const now = new Date();
+    const time = now.toLocaleTimeString();
+    await AsyncStorage.setItem('ticketTime', time);
+    navigation.push('ResentTicket');
+  };
+
   return (
       <View className="bg-white h-full w-full" style={{marginTop:25}}>
         <StatusBar style='dark'/>
@@ -34,7 +43,7 @@ export default function PaymentStatus() {
           </View>
 
           <View style={{alignItems:'center',flex:0.5}}>
-            <TouchableOpacity style={{padding:20}} onPress={()=> navigation.push('ResentTicket')}>
+            <TouchableOpacity style={{padding:20}} onPress={handlePress}>
               <View style={{backgroundColor: '#080742',borderRadius:60,alignItems:'center',height:40,width:300}}>
                   <Text style={{color:'white',fontSize:18,marginTop:5,fontWeight:'bold'}}>View the Ticket</Text>
               </View>

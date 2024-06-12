@@ -217,11 +217,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignSelf: 'center',
     borderRadius: 20,
-    //height: 70,
-    padding: 10,
+    height: 60,
   },
   picker: {
-    height: 50,
+    height: 60,
     width: 280,
     alignSelf: 'center',
     //marginTop: 20,
