@@ -57,6 +57,7 @@ export default function QRcodesScreen1() {
         const fetchedEntrance = response.data.entrance;
         setEntrance(fetchedEntrance);
         await AsyncStorage.setItem('Entrance', fetchedEntrance);
+        await AsyncStorage.setItem('EntranceMessage', `Your vehicle has entered the highway from ${fetchedEntrance} entrance`);  //test123
       } else {
         alert('Vehicle Not Found', 'The vehicle number is not registered.');
       }
@@ -80,6 +81,10 @@ export default function QRcodesScreen1() {
         const fetchedExit = response.data.exit;
         setExit(fetchedExit);
         await AsyncStorage.setItem('Exit', fetchedExit);
+        await AsyncStorage.setItem('EntranceMessage', ` Your vehicle has exited the highway from ${fetchedExit} exit`);  //test123
+        setTimeout(async () => {
+          await AsyncStorage.removeItem('EntranceMessage');
+        }, 360000);
       } else {
         alert('Vehicle Not Found', 'The vehicle number is not registered.');
       }
@@ -132,15 +137,15 @@ export default function QRcodesScreen1() {
         <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>QR Codes</Text>
       </View>
 
-      <View style={{ backgroundColor: '#E0E0E0', padding: 10, borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30}}>
+      <View style={{ backgroundColor: '#E0E0E0', borderRadius: 20, alignSelf: 'center', width: 300, marginTop: 30, height:60}}>
         <Picker
           selectedValue={selectedVehicle}
           onValueChange={(itemValue, itemIndex) => handleChangeVehicle(itemValue)}
-          style={{ height: 50, width: 280 }} 
+          style={{ height: 60, width: 280 }} 
         >
           <Picker.Item label="Select Vehicle" value={null} color={'gray'} />
           {vehicles.map((vehicle, index) => (
-            <Picker.Item key={index} label={`${vehicle.register_no} `} value={vehicle} color="#080742" />
+            <Picker.Item key={index} label={`${vehicle.register_no} `} value={vehicle} color="#080742"  />
           ))}
         </Picker>
       </View>

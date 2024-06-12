@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MarqueeText from 'react-native-marquee';
+
 
 export default function ResentTiket14() {
   const navigation = useNavigation();
@@ -12,9 +14,11 @@ export default function ResentTiket14() {
   const [Entrance, setEntrance] = useState('');
   const [Exit, setExit] = useState('');
   const [currentDate, setCurrentDate] = useState('');
-  const [currentTime, setCurrentTime] = useState('');
+  const [ticketTime, setTicketTime] = useState('');
+  //const [currentTime, setCurrentTime] = useState('');
   const [ticketAmount, setTicketAmount] = useState(null);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [marqueeColor, setMarqueeColor] = useState('#000');
 
 
   {/*useEffect(() => {
@@ -71,13 +75,37 @@ export default function ResentTiket14() {
     fetchExit();
   }, []);
 
+  ///////////////
+  {/*useEffect(() => {
+    const fetchCurrentDate = () => {
+      const now = new Date();
+      const date = now.toDateString();
+      setCurrentDate(date);
+    };
+    fetchCurrentDate();
+  }, []);*/}
+
+  useEffect(() => {
+    const fetchTicketTime = async () => {
+      try {
+        const storedTicketTime = await AsyncStorage.getItem('ticketTime');
+        setTicketTime(storedTicketTime || '');
+      } catch (error) {
+        console.error('Error fetching ticket time:', error);
+      }
+    };
+    fetchTicketTime();
+  }, []);
+
+  //////////////
+
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
       const date = now.toDateString();
-      const time = now.toLocaleTimeString();
+      //const time = now.toLocaleTimeString();
       setCurrentDate(date);
-      setCurrentTime(time);
+      //setCurrentTime(time);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -91,10 +119,11 @@ export default function ResentTiket14() {
           setTicketAmount(storedTicketAmount);
           
           // Set timeout to clear ticketAmount after 3 minutes
+          {/*
           setTimeout(async () => {
             await AsyncStorage.removeItem('ticketAmount');
             setTicketAmount(null);
-          }, 180000); // 3 minutes in milliseconds
+          }, 180000); // 3 minutes in milliseconds*/}
         }
       } catch (error) {
         console.error('Error fetching ticket amount:', error);
@@ -104,7 +133,7 @@ export default function ResentTiket14() {
     fetchTicketAmount();
   }, []);
 
-  useEffect(() => {
+  {/* useEffect(() => {
     // Set timeout to clear Entrance after 3 minutes
     setTimeout(async () => {
       await AsyncStorage.removeItem('Entrance');
@@ -112,12 +141,22 @@ export default function ResentTiket14() {
     }, 180000); // 3 minutes in milliseconds
   }, []);
 
-  useEffect(() => {
+ useEffect(() => {
     // Set timeout to clear Exit after 3 minutes
     setTimeout(async () => {
       await AsyncStorage.removeItem('Exit');
       setExit('');
     }, 180000); // 3 minutes in milliseconds
+  }, []);
+*/}
+  useEffect(() => {
+    const getMarqueeColor = () => {
+      const day = new Date().getDay();
+      const colors = ['#FF0000', '#FFA500', '#FFFF00', '#008000', '#0000FF', '#4B0082', '#EE82EE']; // Colors for Sunday to Saturday
+      setMarqueeColor(colors[day]);
+    };
+
+    getMarqueeColor();
   }, []);
 
   return (
@@ -125,7 +164,7 @@ export default function ResentTiket14() {
       <StatusBar style='dark' />
       <View style={styles.header}>
         <Icon name="arrow-left" size={18} color="#ffff" onPress={() => navigation.push('Home')} />
-        <Text style={styles.title}>HighWay Hub</Text>
+        <Text style={styles.title}>     HighWay Hub</Text>
         <TouchableOpacity style={styles.profileIcon} onPress={() => navigation.push('user')}>
           <Image source={require('../assets/images/profile.jpg')} style={styles.profileImage} />
         </TouchableOpacity>
@@ -134,19 +173,23 @@ export default function ResentTiket14() {
       <View className="w-full p-1 mt-5 flex-row justify-center" style={{backgroundColor:'#FF6F00'}}>
         <Text className="text-center font-bold text-lg" style={{color:'#080742'}}>Recent Ticket</Text>
       </View>
-
+      <View style={{marginLeft:15, marginRight:15}}>
+        <MarqueeText style={[styles.marquee, { color: marqueeColor }]} duration={5000} loop>
+          SOUTHERN EXPRESSWAY [{currentDate}] SOUTHERN EXPRESSWAY 
+        </MarqueeText>
+      </View>
       <View style={styles.ticketContainer}>
         <View style={styles.ticketUpperBox}>
           <View style={styles.ticketBox}>
-            
-            <Text style={styles.ticketText2}>OUTER CIRCULAR EXPRESSWAY</Text>
+          
+            <Text style={styles.ticketText2}>SOUTHERN EXPRESSWAY</Text>
             <Text style={styles.ticketText3}>USER FEE TICKET</Text>
           </View>
         </View>
         <View style={styles.ticket}>
           
           <Text style={styles.ticketText}>Date: {currentDate}</Text>
-          <Text style={styles.ticketText}>Time: {currentTime}</Text>
+          <Text style={styles.ticketText}>Time: {ticketTime}</Text>
           <Text style={styles.ticketText}>Entrance Gate: {Entrance}</Text>
           <Text style={styles.ticketText}>Exit Gate: {Exit}</Text>
           {selectedVehicle && (
@@ -156,10 +199,15 @@ export default function ResentTiket14() {
         </View>
       )}
       
-          <Text style={styles.ticketText}>Amount: {ticketAmount}</Text>
+          <Text style={styles.ticketText}>Amount: RS(LKR) {ticketAmount}.00</Text>
         </View>
       </View>
       <Text style={styles.ticketText4}>Thank You Come Again ! </Text>
+      <View style={{marginLeft:15, marginRight:15}}>
+        <MarqueeText style={[styles.marquee, { color: marqueeColor }]} duration={100} loop>
+          SOUTHERN EXPRESSWAY [{currentDate}] SOUTHERN EXPRESSWAY 
+        </MarqueeText>
+      </View>
     </View>
   );
 }
@@ -190,23 +238,23 @@ const styles = StyleSheet.create({
   },
   ticketContainer: {
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 0,
     alignItems: 'center',
   },
   ticket: {
     backgroundColor: '#E0E0E0',
-    padding: 30,
+    padding: 20,
     borderRadius: 10,
     height: 350,
-    width: 250,
+    width: 260,
     marginTop: 30,
     borderWidth: 2, 
     borderColor: '#080742',  
-    marginBottom: 20, 
+    marginBottom: 5, 
   },
   ticketText: {
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 18,
   },
   ticketText2: {
     fontSize: 16,
@@ -227,5 +275,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#080742',
     
+  },
+  marquee: {
+    fontSize: 12,
+    marginTop:10,
   },
 });
